@@ -4,30 +4,41 @@
     api-level="23"
     density="hdpi"
     format="7"
-    timestamp="66783286392216"
+    timestamp="125168096967922"
     token="1122346114499343053" >
 
     <task
         name="javac"
-        duration="66" />
+        duration="81" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="31" />
+        duration="14" />
     <task
         name="verifier"
-        duration="3" />
+        duration="2" />
 
     <artifact
-        location="/home/karosuo/AndroidStudioProjects/CarControl/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/res/resources-debug.ap_"
+        type="RESOURCES" />
+    <artifact
+        location="/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
+        type="DEX" />
 
-    <build timestamp="66783286392216" >
+    <build timestamp="124678537723314" >
         <artifact
             location="/home/karosuo/AndroidStudioProjects/CarControl/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
+    </build>
+    <build timestamp="125168096967922" >
+        <artifact
+            location="/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/res/resources-debug.ap_"
+            type="RESOURCES" />
+        <artifact
+            location="/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>
