@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/karosuo/AndroidStudioProjects/CarControl/app/src/main/AndroidManifest.xml:2:1-20:12
+ADDED from /home/karosuo/AndroidStudioProjects/CarControl/app/src/main/AndroidManifest.xml:2:1-21:12
 	xmlns:android
 		ADDED from /home/karosuo/AndroidStudioProjects/CarControl/app/src/main/AndroidManifest.xml:2:11-69
 	package
@@ -31,7 +31,7 @@ MERGED from [com.android.support:support-v4:23.4.0] /home/karosuo/AndroidStudioP
 	android:icon
 		ADDED from /home/karosuo/AndroidStudioProjects/CarControl/app/src/main/AndroidManifest.xml:7:9-43
 	android:theme
-		ADDED from /home/karosuo/AndroidStudioProjects/CarControl/app/src/main/AndroidManifest.xml:10:9-40
+		ADDED from /home/karosuo/AndroidStudioProjects/CarControl/app/src/main/AndroidManifest.xml:10:9-65
 activity#com.example.karosuo.carcontrol.MainActivity
 ADDED from /home/karosuo/AndroidStudioProjects/CarControl/app/src/main/AndroidManifest.xml:11:9-17:20
 	android:name

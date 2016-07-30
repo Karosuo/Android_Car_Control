@@ -1,0 +1,9 @@
+CHANGED,/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
+CHANGED,/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/carcontrol/R$style$override.class
+CHANGED,/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/carcontrol/R$layout$override.class
+CHANGED,/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/carcontrol/R$id$override.class
+CHANGED,/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/carcontrol/R$string$override.class
+CHANGED,/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/carcontrol/R$styleable$override.class
+CHANGED,/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/carcontrol/R$override.class
+CHANGED,/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/carcontrol/R$mipmap$override.class
+CHANGED,/home/karosuo/AndroidStudioProjects/CarControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/android/support/v7/appcompat/R$id$override.class
