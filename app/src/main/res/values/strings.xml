@@ -4,4 +4,5 @@
     <string name="load_image_button">Load background image</string>
     <string name="New_trip_text">New trip\'s name</string>
     <string name="add_trip_activity_title">Add new Trip</string>
+    <string name="controller_map_activity_title">Controller Map</string>
 </resources>

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:2:1-26:12
+ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:2:1-28:12
 	xmlns:android
 		ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:2:11-69
 	package
@@ -14,7 +14,7 @@ ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidM
 		INJECTED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml
 		INJECTED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml
 application
-ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:5:5-24:19
+ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:5:5-26:19
 MERGED from [com.android.support:appcompat-v7:23.4.0] /home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] /home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] /home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/AndroidManifest.xml:7:5-20
@@ -61,11 +61,17 @@ ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidM
 	android:name
 		ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:18:27-74
 activity#com.example.karosuo.gyrocontrol.AddTripActivity
-ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:21:9-23:73
+ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:21:9-23:72
 	android:label
 		ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:23:13-60
 	android:name
 		ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:22:13-44
+activity#com.example.karosuo.gyrocontrol.ControllerMapActivity
+ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:24:9-25:78
+	android:label
+		ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml:24:19-56
 uses-sdk
 INJECTED from /home/karosuo/AndroidStudioProjects/GyroControl/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.4.0] /home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/AndroidManifest.xml:21:5-23:78

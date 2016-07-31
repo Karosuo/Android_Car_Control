@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8cefb6bb36ea2bbf9a0404f2eca274066c83118d">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9341f6969936bcb55ea8e39c9ce14254b5e19890/classes.dex" />
+    </item>
+
+</items>

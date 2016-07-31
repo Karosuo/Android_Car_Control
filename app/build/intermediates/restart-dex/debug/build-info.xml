@@ -4,27 +4,27 @@
     api-level="23"
     density="hdpi"
     format="7"
-    timestamp="202504810821163"
+    timestamp="211715109785099"
     token="5472712043028427404" >
 
     <task
         name="javac"
-        duration="2840" />
+        duration="716" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="71" />
     <task
         name="verifier"
-        duration="0" />
+        duration="46" />
 
     <artifact
         location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
-    <build timestamp="202504810821163" >
+    <build timestamp="211715109785099" >
         <artifact
             location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />

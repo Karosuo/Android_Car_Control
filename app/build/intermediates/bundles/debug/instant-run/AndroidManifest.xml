@@ -27,8 +27,10 @@
         </activity>
         <activity
             android:name="com.example.karosuo.gyrocontrol.AddTripActivity"
-            android:label="@string/add_trip_activity_title" >
-        </activity>
+            android:label="@string/add_trip_activity_title" />
+        <activity
+            android:name="com.example.karosuo.gyrocontrol.ControllerMapActivity"
+            android:label="@string/controller_map_activity_title" />
     </application>
 
 </manifest>
