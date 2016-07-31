@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Gyro Control</string>
+    <string name="action_settings">Settings</string>
+    <string name="load_image_button">Load background image</string>
+    <string name="New_trip_text">New trip\'s name</string>
+    <string name="add_trip_activity_title">Add new Trip</string>
+</resources>

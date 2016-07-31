@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="23"
+    density="hdpi"
+    format="7"
+    timestamp="200751411609335"
+    token="5472712043028427404"
+    verifier="METHOD_ADDED" >
+
+    <task
+        name="javac"
+        duration="137" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="21" />
+    <task
+        name="verifier"
+        duration="1" />
+
+    <artifact
+        location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/res/resources-debug.ap_"
+        type="RESOURCES" />
+    <artifact
+        location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
+        type="DEX" />
+
+    <build timestamp="198003810861876" >
+        <artifact
+            location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/outputs/apk/app-debug.apk"
+            type="MAIN" />
+    </build>
+    <build
+        timestamp="199798384401260"
+        verifier="R_CLASS_CHANGE" >
+        <artifact
+            location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="200751411609335"
+        verifier="METHOD_ADDED" >
+        <artifact
+            location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/res/resources-debug.ap_"
+            type="RESOURCES" />
+        <artifact
+            location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
+            type="DEX" />
+    </build>
+
+</instant-run>
