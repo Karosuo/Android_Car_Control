@@ -4,30 +4,50 @@
     api-level="23"
     density="hdpi"
     format="7"
-    timestamp="211715109785099"
-    token="5472712043028427404" >
+    timestamp="221176649233142"
+    token="5472712043028427404"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="716" />
+        duration="64" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="475" />
     <task
         name="instant-run-transform"
-        duration="71" />
+        duration="6" />
     <task
         name="verifier"
-        duration="46" />
+        duration="1" />
 
     <artifact
-        location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/reload-dex/debug/classes.dex"
+        type="RELOAD_DEX" />
 
-    <build timestamp="211715109785099" >
+    <build timestamp="220177287208518" >
         <artifact
             location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
+    </build>
+    <build timestamp="220557926692094" >
+        <artifact
+            location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="220685168634250"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/builds/debug/220685168634250/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="221176649233142"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/reload-dex/debug/classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>
