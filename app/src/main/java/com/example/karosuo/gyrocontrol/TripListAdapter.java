@@ -4,11 +4,14 @@ package com.example.karosuo.gyrocontrol;
  * Created by karosuo on 30/07/16.
  */
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,15 +56,25 @@ public class TripListAdapter extends ArrayAdapter<Trip> {
         Trip tempTrip = this.myTripList.get(position);
 
         if (tempTrip != null) {
+            String[] dateComponents = new String[2];
 
             // This is how you obtain a reference to the TextViews.
             // These TextViews are created in the XML files we defined.
 
             TextView trip_title = (TextView) convertView.findViewById(R.id.element_title);
             TextView trip_date = (TextView) convertView.findViewById(R.id.element_date);
+            TextView trip_time = (TextView) convertView.findViewById(R.id.element_time);
+            TextView trip_duration = (TextView) convertView.findViewById(R.id.element_duration);
+            ImageView trip_Image = (ImageView) convertView.findViewById(R.id.element_image);
 
             trip_title.setText(tempTrip.getName());
-            trip_date.setText(tempTrip.getFecha());
+            dateComponents = tempTrip.getFechaDH();
+            trip_date.setText(dateComponents[0]); //Set the YYYY/MM/dd
+            trip_time.setText(dateComponents[1]); //Set the HH:mm
+            //trip_duration.setText(tempTrip.getStringDuracion(trip_duration.getContext()));
+            //trip_duration.setText("1 hrs, 35 min");
+            trip_duration.setText(String.valueOf(tempTrip.getDuracion()));
+            trip_Image.setImageURI(Uri.parse(tempTrip.getImgUri()));
         }
 
         return convertView;

@@ -14,6 +14,8 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by karosuo on 31/07/16.
  */
@@ -22,30 +24,54 @@ public class SensorsFragment extends Fragment implements SensorEventListener{
         private SensorManager mSensorManager;
         private Sensor mAccelerometer;
         private Sensor mMagnetometer;
-        private final float[] mAccelerometerReading = new float[3];
-        private final float[] mMagnetometerReading = new float[3];
+        private float[] mAccelerometerReading = new float[3];
+        private float[] mMagnetometerReading = new float[3];
 
-        private final float[] mRotationMatrix = new float[9];
-        private final float[] mOrientationAngles = new float[3];
+        private float[] mRotationMatrix = new float[9];
+        private float[] mOrientationAngles = new float[3];
 
-    public SensorsFragment() {
+        private boolean isMagnetometer = false;
+        private boolean activityCreated = false;
+
+        private ArrayList registeredElements;
+
+    public float[] getReadings(){
+        return mAccelerometerReading; //This should be mOrientationAngles
     }
 
-    @Override
+    public SensorsFragment() {
+        registeredElements = new ArrayList();
+    }
+
+    public void registerListener(Object ob){
+        this.registeredElements.add(ob);
+    }
+
+    private void sensorEventMessage(){
+        for(Object tmp : this.registeredElements){
+            ((MySensorListener) tmp).getDataFromSensors(getReadings());
+        }
+        //Toast toast = Toast.makeText(this.getActivity(), String.format("x: %.3f, y: %.3f", this.mOrientationAngles[0], this.mOrientationAngles[1]), Toast.LENGTH_LONG);
+        //toast.show();
+    }
+
+        @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             mSensorManager = (SensorManager) this.getActivity().getSystemService(Context.SENSOR_SERVICE);
             setRetainInstance(true);
             mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+
+            if (mMagnetometer != null) {
+                this.isMagnetometer = true; //There's magnetometer
+            }
         }
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState){
             super.onActivityCreated(savedInstanceState);
-
-            TextView testText = (TextView) this.getActivity().findViewById(R.id.test_text);
-            testText.setText(String.format("x: %.3f, y: %.3f, z: %.3f",this.mOrientationAngles[0],this.mOrientationAngles[1],this.mOrientationAngles[2]));
+            this.activityCreated = true;
         }
 
         @Override
@@ -72,7 +98,9 @@ public class SensorsFragment extends Fragment implements SensorEventListener{
             // the application receives an update before the system checks the sensor
             // readings again.
             mSensorManager.registerListener(this, this.mAccelerometer,SensorManager.SENSOR_DELAY_NORMAL);
-            mSensorManager.registerListener(this, this.mMagnetometer,SensorManager.SENSOR_DELAY_NORMAL);
+
+            if (isMagnetometer)
+                mSensorManager.registerListener(this, this.mMagnetometer,SensorManager.SENSOR_DELAY_NORMAL);
             /*
             mSensorManager.registerListener(this, this.mAccelerometer,SensorManager.SENSOR_DELAY_NORMAL, SensorManager.SENSOR_DELAY_UI);
             mSensorManager.registerListener(this, this.mMagnetometer,SensorManager.SENSOR_DELAY_NORMAL, SensorManager.SENSOR_DELAY_UI);
@@ -92,19 +120,27 @@ public class SensorsFragment extends Fragment implements SensorEventListener{
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                System.arraycopy(event.values, 0, mAccelerometerReading,
-                        0, mAccelerometerReading.length);
+                System.arraycopy(event.values, 0, mAccelerometerReading,0, mAccelerometerReading.length);
+            }else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+                System.arraycopy(event.values, 0, mMagnetometerReading,0, mMagnetometerReading.length);
             }
 
-            else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-                System.arraycopy(event.values, 0, mMagnetometerReading,
-                        0, mMagnetometerReading.length);
-            }
-            this.updateOrientationAngles();
+            this.mOrientationAngles = this.mAccelerometerReading;
 
-            String str_sensors = String.format("x: %.3f, y: %.3f, z: %.3f",this.mOrientationAngles[0],this.mOrientationAngles[1],this.mOrientationAngles[2]);
-            Toast toast = Toast.makeText(this.getActivity(), str_sensors, Toast.LENGTH_SHORT);
-            toast.show();
+            if (isMagnetometer) {
+                this.updateOrientationAngles();
+            }
+
+            /*
+            if (this.activityCreated)
+            {
+                TextView testText = (TextView) this.getActivity().findViewById(R.id.sensors_text);
+                if (testText != null){
+                    testText.setText(String.format("x: %.3f, y: %.3f, z: %.3f",this.mOrientationAngles[0],this.mOrientationAngles[1],this.mOrientationAngles[2]));
+                }
+            }*/
+
+            this.sensorEventMessage();
         }
 
         // Compute the three orientation angles based on the most recent readings from

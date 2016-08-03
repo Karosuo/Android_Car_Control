@@ -1,2 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0_db3244d623076891194959108a88d4a8d5727a2f.jar" />
+    </item>
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="96e5f6b3c5fac4247fe1b46442fbb55ac974af9e">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/instant-run_d043426073539d91134bc7e7f6c94934643f7522.jar" />
+    </item>
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.4.0_81f17ac34ee3438db55b0ca0efd113de32a37a60.jar" />
+    </item>
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.4.0_76b6f1dae51ff5b9ee1398b40d6ed841bcb9e1ca.jar" />
+    </item>
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.4.0_360f7e19f72c8b71e45c015b1f75db787c10cde7.jar" />
+    </item>
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.4.0_ff7997738a476016a8ae93e4212968dd28af2bfb.jar" />
+    </item>
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="90e988f2956bd4b23376e41063a28230a85d040f">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_9341f6969936bcb55ea8e39c9ce14254b5e19890.jar" />
+    </item>
+    <item
+        jar="/home/karosuo/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_a8d164918a2301ba8d86c98a3520e55970860b1e.jar" />
+    </item>
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.4.0_f3abce09303e99f03297fe89acfa834429456ec3.jar" />
+    </item>
+    <item
+        jar="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.4.0_b1b950beef8c17ec58434a7f89d2440635177029.jar" />
+    </item>
+
+</items>

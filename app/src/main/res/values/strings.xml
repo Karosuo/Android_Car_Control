@@ -5,4 +5,7 @@
     <string name="New_trip_text">New trip\'s name</string>
     <string name="add_trip_activity_title">Add new Trip</string>
     <string name="controller_map_activity_title">Controller Map</string>
+    <string name="not_null_name">Can not have empty name</string>
+    <string name="duration_days_tag">days</string>
+    <string name="duration_secs_tag">secs</string>
 </resources>

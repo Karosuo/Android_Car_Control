@@ -1,6 +1,0 @@
-CHANGED,/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
-CHANGED,/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/gyrocontrol/AddTripFragment$override.class
-CHANGED,/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/gyrocontrol/R$styleable$override.class
-CHANGED,/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/gyrocontrol/R$override.class
-CHANGED,/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/gyrocontrol/R$string$override.class
-CHANGED,/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/karosuo/gyrocontrol/R$style$override.class

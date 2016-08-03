@@ -4,9 +4,15 @@ package com.example.karosuo.gyrocontrol;
  * Created by karosuo on 30/07/16.
  */
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,7 +21,7 @@ import java.util.Date;
 /**
  * Created by karosuo on 28/07/16.
  */
-public class MainListFragment extends ListFragment {
+public class MainListFragment extends Fragment {// ListFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
@@ -26,8 +32,8 @@ public class MainListFragment extends ListFragment {
         MyDBAccess myDB = new MyDBAccess(myBaseActivity); //Instantiate the DB Handler
 
         /** Test Trip Objects, to put them on to DB */
-        //Trip myThirdTrip = new Trip("Third Trip", null, "Trayectoria", 36); //Test Trip object
-        //Trip mySecondTrip = new Trip("Second Trip", null, "Trayectoria", 25); //Test Trip object
+        //Trip myThirdTrip = new Trip("Hour and something", null, "Trayectoria", 3800); //Test Trip object
+        //Trip mySecondTrip = new Trip("Just seconds", null, "Trayectoria", 25); //Test Trip object
         //myDB.addTrip(mySecondTrip);
         //myDB.addTrip(myThirdTrip);
 
@@ -41,7 +47,14 @@ public class MainListFragment extends ListFragment {
         myTripList =  myDB.getAllTrips();
 
         /** Adjust the adapter */
+        ListView mainListView = (ListView) this.getActivity().findViewById(R.id.main_list_listview);
         TripListAdapter ListAdapter = new TripListAdapter(myBaseActivity, R.layout.main_list_element, myTripList);
-        setListAdapter(ListAdapter);
+        mainListView.setAdapter(ListAdapter);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        View myView = inflater.inflate(R.layout.main_list_layout, container, false);
+        return myView;
     }
 }
