@@ -8,4 +8,7 @@
     <string name="not_null_name">Can not have empty name</string>
     <string name="duration_days_tag">days</string>
     <string name="duration_secs_tag">secs</string>
+    <string name="search_by_length_tag">by length</string>
+    <string name="search_by_date_tag">by date</string>
+    <string name="search_by_name_tag">by name</string>
 </resources>

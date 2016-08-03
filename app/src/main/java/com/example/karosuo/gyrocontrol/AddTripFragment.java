@@ -134,13 +134,13 @@ public class AddTripFragment extends Fragment {
             /** Android Dev page suggestion */
             Bundle extras = data.getExtras();
             bitmap = (Bitmap) extras.get("data");
-            ImageView ivImage = (ImageView) getActivity().findViewById(R.id.load_image_view);
+            //ImageView ivImage = (ImageView) getActivity().findViewById(R.id.load_image_view);
             //ivImage.setImageBitmap(imageBitmap);
         }
 
         mImageView.setImageBitmap(bitmap);
     }
-
+/*
     private void onCaptureImageResult(Intent data, Bitmap thumbnail) {
         ImageView ivImage = (ImageView) getActivity().findViewById(R.id.load_image_view);
 
@@ -165,7 +165,7 @@ public class AddTripFragment extends Fragment {
 
         //ivImage.setImageBitmap(thumbnail);
     }
-
+*/
 
     public String getRealPathFromURI(Uri contentUri){
         String[] proj = {MediaStore.Images.Media.DATA};

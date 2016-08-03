@@ -1,1 +1,0 @@
-CHANGED,/home/karosuo/AndroidStudioProjects/GyroControl/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/karosuo/gyrocontrol/SensorsFragment.class
