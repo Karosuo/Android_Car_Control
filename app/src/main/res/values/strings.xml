@@ -11,4 +11,6 @@
     <string name="search_by_length_tag">by length</string>
     <string name="search_by_date_tag">by date</string>
     <string name="search_by_name_tag">by name</string>
+    <string name="user_input_text_title_tag">Search by Name</string>
+    <string name="user_input_text_hint_tag">Name of the Trip(s)</string>
 </resources>

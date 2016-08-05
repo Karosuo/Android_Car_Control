@@ -56,7 +56,7 @@ public class TripListAdapter extends ArrayAdapter<Trip> {
         Trip tempTrip = this.myTripList.get(position);
 
         if (tempTrip != null) {
-            String[] dateComponents = new String[2];
+            String[] dateComponents;
 
             // This is how you obtain a reference to the TextViews.
             // These TextViews are created in the XML files we defined.
