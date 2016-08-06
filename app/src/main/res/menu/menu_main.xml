@@ -37,6 +37,12 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/show_all_mainItem"
+        android:orderInCategory="200"
+        android:title="@string/show_all_tag"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/wifi_status"
         android:orderInCategory="190"
         android:title="wifi_status"

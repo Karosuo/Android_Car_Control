@@ -21,6 +21,7 @@ import java.net.UnknownHostException;
 public class ControllerMapActivity extends AppCompatActivity implements MySensorListener{
 
     private DrawingPanelView control_drawing_panel;
+    private boolean paused = false;
     //private float[] rollPitch; //this is for painting, not initialized
 
     @Override
@@ -65,17 +66,19 @@ public class ControllerMapActivity extends AppCompatActivity implements MySensor
 
     @Override
     public void getDataFromSensors(float[] sensorData) {
-        String message = String.format("%.3f,%.3f",sensorData[0],sensorData[1]);
-        String ipAdress = "192.168.0.109";
-        int port = 12345;
-        UDPConnect.setup(ipAdress, port);
-        UDPConnect.sendString(message);
+        if (!paused){
+            String message = String.format("%.3f,%.3f",sensorData[0],sensorData[1]);
+            String ipAdress = "192.168.0.109";
+            int port = 12345;
+            UDPConnect.setup(ipAdress, port);
+            UDPConnect.sendString(message);
+        }
     }
 
-    //@Override
-    public void onCreateOptionsMenu(
-            Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.stop_control, menu);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.getMenuInflater().inflate(R.menu.stop_control, menu);
+        return true;
     }
 
     @Override
@@ -83,6 +86,9 @@ public class ControllerMapActivity extends AppCompatActivity implements MySensor
         // handle item selection
         switch (item.getItemId()) {
             case R.id.stop_trip:
+                break;
+            case R.id.pause_trip:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -11,4 +11,11 @@
         android:icon="@drawable/stop_icon2"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/pause_trip"
+        android:orderInCategory="200"
+        android:title="Search"
+        android:icon="@drawable/pause_icon2"
+        app:showAsAction="always"/>
+
 </menu>

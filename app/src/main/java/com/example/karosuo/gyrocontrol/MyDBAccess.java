@@ -46,7 +46,7 @@ public class MyDBAccess {
         ContentValues values = new ContentValues();
         values.put(T_NAME, myTrip.getName());
         values.put(T_IMGURI, myTrip.getImgUri());
-        values.put(T_FECHA, new SimpleDateFormat("yyyy-MM-DD HH:mm:ss").format(new Date()));
+        values.put(T_FECHA, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         values.put(T_DURAC, myTrip.getDuracion());
         values.put(T_TRAYECT, myTrip.getTrayectoria());
         database.insert(TABLE_NAME, null, values);
@@ -78,6 +78,8 @@ public class MyDBAccess {
     }
 
     public ArrayList<Trip> getTripByDate(String fechaInf, String fechaSup){
+        fechaInf = String.format("%s 00:00:00", fechaInf);
+        fechaSup = String.format("%s 23:59:59", fechaSup);
         this.database = this.dbHelper.getReadableDatabase();
         ArrayList<Trip> myTripList = new ArrayList<Trip>();
         Cursor cursor = this.database.query(TABLE_NAME, new String[]{"_id",T_NAME,T_IMGURI,T_FECHA,T_DURAC,T_TRAYECT},T_FECHA + " BETWEEN ? AND ?", new String[]{fechaInf,fechaSup},null,null,null,null);
@@ -101,8 +103,9 @@ public class MyDBAccess {
     }
 
     public ArrayList<Trip> getTripByDate(String fecha){
+        fecha = String.format("%s 23:59:59", fecha);
         this.database = this.dbHelper.getReadableDatabase();
-        ArrayList<Trip> myTripList = new ArrayList<Trip>();
+        ArrayList<Trip> myTripList = new ArrayList<>();
         Cursor cursor = this.database.query(TABLE_NAME, new String[]{"_id",T_NAME,T_IMGURI,T_FECHA,T_DURAC,T_TRAYECT},T_FECHA + "<=?", new String[]{fecha},null,null,null,null);
         if (cursor != null)
         {

@@ -80,8 +80,8 @@ public class Trip {
      * H - Hour/min part, without seconds index 1
      * */
     public String[] getFechaDH(){
-        String[] dateComponents = new String[2]; //D-H components
-        String[] HMSComponents = new String[3]; //HH:mm:ss components
+        String[] dateComponents; //D-H components
+        String[] HMSComponents; //HH:mm:ss components
         dateComponents = getFecha().split(" ");
 
         HMSComponents = dateComponents[1].split(":"); //split the H part into HH:mm:ss components

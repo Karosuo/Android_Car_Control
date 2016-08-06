@@ -13,4 +13,8 @@
     <string name="search_by_name_tag">by name</string>
     <string name="user_input_text_title_tag">Search by Name</string>
     <string name="user_input_text_hint_tag">Name of the Trip(s)</string>
+    <string name="show_all_tag">show all</string>
+    <string name="yes_dialog_tag">yes</string>
+    <string name="no_dialog_tag">no</string>
+    <string name="confirm_delete_trip_tag">Sure to delete this trip?</string>
 </resources>

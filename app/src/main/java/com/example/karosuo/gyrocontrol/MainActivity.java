@@ -1,5 +1,6 @@
 package com.example.karosuo.gyrocontrol;
 
+import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,16 +17,19 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.BaseAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
     private MainListFragment mListFrag;
     private EditText userInputDialogEditText; //Trip name for search
-    private String date_for_search;
+    private DatePicker userInputDialogDate; //Trip(s)'s date for search
     private int lenth_for_search;
 
     @Override
@@ -77,14 +81,38 @@ public class MainActivity extends AppCompatActivity {
         }else if (id == R.id.search_by_name){
             setupInputDialog(this);
         }else if(id == R.id.search_by_date){
-
+            setupDateDialog(this);
         }else if(id == R.id.search_by_length){
 
+        }else if(id == R.id.show_all_mainItem){
+            mListFrag.showAllTrips();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void setupDateDialog(Context activityContext){
+        /** Get current date */
+        final Calendar myCal = Calendar.getInstance();
+        int mYear = myCal.get(Calendar.YEAR);
+        int mMont = myCal.get(Calendar.MONTH);
+        int mDay = myCal.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        /** Te user changed the date */
+                        String dateToSearch = String.format("%04d-%02d-%02d", year, monthOfYear+1, dayOfMonth);
+                        ArrayList<Trip> myList = mListFrag.getMyDB().getTripByDate(dateToSearch);
+
+                        if(!myList.isEmpty()){
+                            mListFrag.updateTripList(myList);
+                        }
+                    }
+                }, mYear, mMont, mDay);
+        datePickerDialog.show();
+    }
 
     private void setupInputDialog(Context c){
         LayoutInflater layoutInflaterAndroid = LayoutInflater.from(c);
@@ -97,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Send", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogBox, int id) {
-                        //mListFrag.setMyTripList(mListFrag.getMyDB().getTripByName(userInputDialogEditText.getText().toString()));
                         String nameToSearch = userInputDialogEditText.getText().toString();
                         ArrayList<Trip> myList = mListFrag.getMyDB().getTripByName(nameToSearch);
 
@@ -117,5 +144,17 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
         alertDialogAndroid.show();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        mListFrag.showAllTrips();
+    }
+
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        mListFrag.showAllTrips();
     }
 }

@@ -69,7 +69,7 @@ public class TripListAdapter extends ArrayAdapter<Trip> {
 
             trip_title.setText(tempTrip.getName());
             dateComponents = tempTrip.getFechaDH();
-            trip_date.setText(dateComponents[0]); //Set the YYYY/MM/dd
+            trip_date.setText(dateComponents[0]); //Set the YYYY/mm/dd
             trip_time.setText(dateComponents[1]); //Set the HH:mm
             //trip_duration.setText(tempTrip.getStringDuracion(trip_duration.getContext()));
             //trip_duration.setText("1 hrs, 35 min");
