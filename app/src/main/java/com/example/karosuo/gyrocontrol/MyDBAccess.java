@@ -102,6 +102,31 @@ public class MyDBAccess {
         return myTripList;
     }
 
+
+    public ArrayList<Trip> orderBySizeDESC(){
+        this.database = this.dbHelper.getReadableDatabase();
+        ArrayList<Trip> myTripList = new ArrayList<>();
+        Cursor cursor = this.database.query(TABLE_NAME, new String[]{"_id",T_NAME,T_IMGURI,T_FECHA,T_DURAC,T_TRAYECT},null, null,null,null,T_DURAC + " DESC",null);
+        if (cursor != null)
+        {
+            if (cursor.moveToFirst()){
+                do{
+                    Trip myTrip = new Trip();
+                    myTrip.setId(cursor.getInt(cursor.getColumnIndex("_id")));
+                    myTrip.setName(cursor.getString(cursor.getColumnIndex(T_NAME)));
+                    myTrip.setImgUri(cursor.getString(cursor.getColumnIndex(T_IMGURI)));
+                    myTrip.setFecha(cursor.getString(cursor.getColumnIndex(T_FECHA)));
+                    myTrip.setDuracion(cursor.getInt(cursor.getColumnIndex(T_DURAC)));
+                    myTrip.setTrayectoria(cursor.getString(cursor.getColumnIndex(T_TRAYECT)));
+                    myTripList.add(myTrip);
+                }while(cursor.moveToNext());
+            }
+        }
+        this.database.close();
+        return myTripList;
+    }
+
+
     public ArrayList<Trip> getTripByDate(String fecha){
         fecha = String.format("%s 23:59:59", fecha);
         this.database = this.dbHelper.getReadableDatabase();
@@ -229,6 +254,7 @@ public class MyDBAccess {
         this.database.close();
         return affected_cols;
     }
+
 
     public void deleteTrip(Trip myTrip) {
         this.database = dbHelper.getWritableDatabase();

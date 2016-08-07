@@ -93,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
             setupInputDialog(this);
         }else if(id == R.id.search_by_date){
             setupDateDialog(this);
-        }else if(id == R.id.search_by_length){
-
+        }else if(id == R.id.order_by_length){
+            orderBySize();
         }else if(id == R.id.show_all_mainItem){
             mListFrag.showAllTrips();
         }else if(id == R.id.wifi_config_actionbar){
@@ -194,6 +194,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }, mYear, mMont, mDay);
         datePickerDialog.show();
+    }
+
+    private void orderBySize(){
+        ArrayList<Trip> myList = mListFrag.getMyDB().orderBySizeDESC();
+
+        if(!myList.isEmpty()){
+            mListFrag.updateTripList(myList);
+        }
     }
 
     private void setupInputDialog(Context c){

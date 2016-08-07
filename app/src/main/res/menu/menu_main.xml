@@ -30,13 +30,6 @@
                 app:showAsAction="never"/>
 
             <item
-                android:id="@+id/search_by_length"
-                android:orderInCategory="200"
-                android:title="@string/search_by_length_tag"
-                android:icon="@drawable/length_icon"
-                app:showAsAction="never"/>
-
-            <item
                 android:id="@+id/show_all_mainItem"
                 android:orderInCategory="200"
                 android:title="@string/show_all_tag"
@@ -58,6 +51,13 @@
         android:title="wifi_status"
         android:icon="@drawable/wifi_config_icon2"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/order_by_length"
+        android:orderInCategory="200"
+        android:title="@string/order_by_length_tag"
+        android:icon="@drawable/order_by_size_icon3"
+        app:showAsAction="ifRoom"/>
 
 </menu>
 
