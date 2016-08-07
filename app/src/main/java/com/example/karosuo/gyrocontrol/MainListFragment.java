@@ -86,7 +86,7 @@ public class MainListFragment extends Fragment {// ListFragment {
 
                                 getMyDB().deleteTrip(myTripList.get(position));
                                 showAllTrips();
-                                Toast toast = Toast.makeText(MainListFragment.this.getActivity(), String.format("%s eliminado", name_to_eliminate), Toast.LENGTH_LONG);
+                                Toast toast = Toast.makeText(MainListFragment.this.getActivity(), String.format("%s eliminado", name_to_eliminate ), Toast.LENGTH_LONG);
                                 toast.show();
                                 break;
                             case DialogInterface.BUTTON_NEGATIVE:

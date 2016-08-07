@@ -17,4 +17,9 @@
     <string name="yes_dialog_tag">yes</string>
     <string name="no_dialog_tag">no</string>
     <string name="confirm_delete_trip_tag">Sure to delete this trip?</string>
+    <string name="user_wifi_config_title_tag">Connect to:</string>
+    <string name="user_wifi_config_edit_tag">xxxx.xxxx.xxxx.xxx:port</string>
+    <string name="search_button_tag">Search</string>
+    <string name="cancel_button_tag">Cancel</string>
+    <string name="done_button_tag">Done</string>
 </resources>

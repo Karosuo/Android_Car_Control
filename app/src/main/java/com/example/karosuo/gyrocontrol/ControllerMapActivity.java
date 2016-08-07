@@ -1,22 +1,11 @@
 package com.example.karosuo.gyrocontrol;
 
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 
 public class ControllerMapActivity extends AppCompatActivity implements MySensorListener{
 
@@ -67,11 +56,14 @@ public class ControllerMapActivity extends AppCompatActivity implements MySensor
     @Override
     public void getDataFromSensors(float[] sensorData) {
         if (!paused){
+
             String message = String.format("%.3f,%.3f",sensorData[0],sensorData[1]);
-            String ipAdress = "192.168.0.109";
+            /*
+            String ipAdress = String.format("192.168.0.3");
             int port = 12345;
-            UDPConnect.setup(ipAdress, port);
-            UDPConnect.sendString(message);
+            UDPConnection.setup(ipAdress, port);
+            */
+            UDPConnection.sendString(message);
         }
     }
 
