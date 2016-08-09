@@ -118,7 +118,7 @@ public class ControllerMapActivity extends AppCompatActivity implements MySensor
     @Override
     public void getDataFromSensors(float[] sensorData) {
         if (!paused){
-            String message = String.format("%.3f,%.3f,%.3f",sensorData[0],sensorData[1], sensorData[2]);
+            String message = String.format("%.3f,%.3f",sensorData[0],sensorData[1]);
             UDPConnection.sendString(message);
         }
     }
