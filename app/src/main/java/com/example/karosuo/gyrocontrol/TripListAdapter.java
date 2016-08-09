@@ -71,7 +71,9 @@ public class TripListAdapter extends ArrayAdapter<Trip> {
             dateComponents = tempTrip.getFechaDH();
             trip_date.setText(dateComponents[0]); //Set the YYYY/mm/dd
             trip_time.setText(dateComponents[1]); //Set the HH:mm
-            trip_duration.setText(String.valueOf(tempTrip.getDuracion()));
+            //trip_duration.setText(String.valueOf(tempTrip.getDuracion()));
+            trip_duration.setText(tempTrip.getStringDuracion(this.getContext()));
+
             if (tempTrip.getImgUri().equals("Default")){
                 trip_Image.setImageBitmap(BitmapHelper.decodeSampledBitmapFromResource(trip_Image.getContext().getResources(), R.drawable.default_map, 70, 50));
             }else{

@@ -5,6 +5,7 @@ package com.example.karosuo.gyrocontrol;
  */
 import android.content.Context;
 import android.net.Uri;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -106,43 +107,46 @@ public class Trip {
         return duracion;
     }
 
-    public String getStringDuracion(Context c){
-        return getPrintableTime(secsToString(),c);
-    }
+    public String getStringDuracion(Context c){ return getPrintableTime(secsToString(),c); }
 
     private String getPrintableTime(int[] components, Context c){
+        String string_time = null;
         if (components[3] == 31){
-            return "Too much";
+            string_time = String.format("Too much");
         }else{
             if (components[3] == 0){ //if not days
                 if (components[2] == 0){ //if not hrs
                     if (components[1] == 0){ //if not minutes
                         if (components[0] == 0){ //if not secods
-                            return "Nothing";
+                            string_time = String.format("Nothing");
                         }else{
-                            return String.format("%d %s",components[2],components[1],c.getResources().getString(R.string.duration_secs_tag));
+                            string_time = String.format("%d %s",components[0],"secs");
                         }
                     }else{
                         if (components[0] == 0){ //If no secs with mins, then don't show'em
-                            return String.format("%d mins",components[1]);
+                            string_time = String.format("%d mins",components[1]);
+                        }else{
+                            string_time = String.format("%d mins, %d %s",components[1],components[0],"secs");
                         }
-                        return String.format("%d mins, %d %s",components[1],components[0],c.getResources().getString(R.string.duration_secs_tag));
                     }
                 }else{
                     if (components[1] == 0){ //If no minutes with hourse, then don't show'em
-                        return String.format("%d hrs",components[2]);
+                        string_time = String.format("%d hrs",components[2]);
                     }
                     else{
-                        return String.format("%d hrs, %d mins",components[2],components[1]);
+                        string_time = String.format("%d hrs, %d mins",components[2],components[1]);
                     }
                 }
             }else{
                 if (components[2] == 0){
-                    return String.format("%d %s",components[3], c.getResources().getString(R.string.duration_days_tag));
+                    string_time = String.format("%d %s",components[3], "days");
+                }else{
+                    string_time = String.format("%d %s, %d hrs",components[3], "days",components[2]);
                 }
-                return String.format("%d %s, %d hrs",components[3], c.getResources().getString(R.string.duration_days_tag),components[2]);
             }
         }
+
+        return string_time;
     }
 
     private int[] secsToString(){

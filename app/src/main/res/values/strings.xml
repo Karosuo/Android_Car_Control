@@ -22,4 +22,5 @@
     <string name="search_button_tag">Search</string>
     <string name="cancel_button_tag">Cancel</string>
     <string name="done_button_tag">Done</string>
+    <string name="start_trip_tag">Trip started</string>
 </resources>

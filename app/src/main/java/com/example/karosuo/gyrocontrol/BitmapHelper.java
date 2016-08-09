@@ -57,6 +57,11 @@ public class BitmapHelper {
         return BitmapFactory.decodeResource(res, resId, options);
     }
 
+    public static Bitmap decodeSampledBitmapFromUri(Uri uri) {
+        //return BitmapFactory.decodeResource(res, resId, options);
+        return BitmapFactory.decodeFile(getRealPathFromURI(uri));
+    }
+
     public static Bitmap decodeSampledBitmapFromUri(Uri uri,
                                                     int reqWidth, int reqHeight) {
 
@@ -66,12 +71,8 @@ public class BitmapHelper {
         //BitmapFactory.decodeResource(res, resId, options);
         BitmapFactory.decodeFile(getRealPathFromURI(uri), options);
 
-        if (reqHeight == 0 || reqWidth == 0){
-            options.inSampleSize = 1;
-        }else{
-            // Calculate inSampleSize
-            options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        }
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
 
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;

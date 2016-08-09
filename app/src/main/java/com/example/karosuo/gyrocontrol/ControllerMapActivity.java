@@ -3,6 +3,7 @@ package com.example.karosuo.gyrocontrol;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.ImageFormat;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v4.content.res.ResourcesCompat;
@@ -71,6 +72,9 @@ public class ControllerMapActivity extends AppCompatActivity implements MySensor
         }
         /** Add listener to get the sensors fragment data*/
         mSensFrag.registerListener(this);
+
+        Toast toast = Toast.makeText(this, R.string.start_trip_tag, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     @Override
@@ -79,7 +83,13 @@ public class ControllerMapActivity extends AppCompatActivity implements MySensor
         MyDBAccess myDB = new MyDBAccess(this);
         Trip tmpTrip = myDB.getTripById(current_trip_id);
         ImageView bkImage = (ImageView) findViewById(R.id.controller_background_imageView);
-        bkImage.setImageBitmap(BitmapHelper.decodeSampledBitmapFromUri(Uri.parse(tmpTrip.getImgUri()),0, 0));
+        String tmpUri = tmpTrip.getImgUri();
+        if (tmpUri.equals("Default")){
+            bkImage.setImageResource(R.drawable.default_map);
+        }else
+        {
+            bkImage.setImageBitmap(BitmapHelper.decodeSampledBitmapFromUri(Uri.parse(tmpTrip.getImgUri())));
+        }
     }
 
     @Override
