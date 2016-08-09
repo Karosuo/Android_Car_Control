@@ -75,9 +75,11 @@ public class TripListAdapter extends ArrayAdapter<Trip> {
             if (tempTrip.getImgUri().equals("Default")){
                 trip_Image.setImageBitmap(BitmapHelper.decodeSampledBitmapFromResource(trip_Image.getContext().getResources(), R.drawable.default_map, 70, 50));
             }else{
-                //trip_Image.setImageURI(Uri.parse(tempTrip.getImgUri()));
-                Uri.Builder UriBuild = new Uri.Builder();
-                UriBuild.appendPath(tempTrip.getImgUri());
+                /** Second option to obtain an URI with a sepcific path
+                Uri.Builder UriBuild = new Uri.Builder(); //new builder
+                UriBuild.appendPath(tempTrip.getImgUri()); //add the path
+                UriBuild.build(); //builds an URI
+                */
                 trip_Image.setImageBitmap(BitmapHelper.decodeSampledBitmapFromUri(Uri.parse(tempTrip.getImgUri()),50,50));
             }
 

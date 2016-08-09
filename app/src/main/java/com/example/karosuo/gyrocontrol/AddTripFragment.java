@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by karosuo on 31/07/16.
@@ -40,6 +41,8 @@ public class AddTripFragment extends Fragment {
     private static final int PICK_FROM_FILE=2;
     private Button btn_choose_image;
     private ImageView mImageView;
+
+    public static final String CURRENT_TRIP_ID = "Current_trip_ID";
 
 
     @Override
@@ -116,95 +119,12 @@ public class AddTripFragment extends Fragment {
             return;
         Bitmap bitmap = null;
         //String path="";
-        if (requestCode == PICK_FROM_FILE){
-            /** Previous suggestion, left as ref*/
-            /*imageCaptureUri = data.getData();
-            path = getRealPathFromURI(imageCaptureUri);
-            if (path == null)
-                path = imageCaptureUri.getPath();
-            if (path != null)
-                bitmap = BitmapFactory.decodeFile(path);
-                */
-            /** From Stack overflow, Narendra Motwani*/
-            bitmap = onSelectFromGalleryResult(data);
-        }else if(requestCode == PICK_FROM_CAMERA){
-            /** Android tut suggestion
-             * https://www.youtube.com/watch?v=UiqmekHYCSU*/
-            /*path = imageCaptureUri.getPath();
-            bitmap = BitmapFactory.decodeFile(path);*/
 
-            /** Tejas Jasani suggestion
-             * http://www.theappguruz.com/blog/android-take-photo-camera-gallery-code-sample*/
-            //onCaptureImageResult(data, bitmap);
-
-            /** Android Dev page suggestion */
-            Bundle extras = data.getExtras();
-            bitmap = (Bitmap) extras.get("data");
-            imageCaptureUri = data.getData();
-            //ImageView ivImage = (ImageView) getActivity().findViewById(R.id.load_image_view);
-            //ivImage.setImageBitmap(imageBitmap);
-        }
-
+        imageCaptureUri = data.getData();
+        ImageView ivImage = (ImageView) getActivity().findViewById(R.id.load_image_view);
+        bitmap = BitmapHelper.decodeSampledBitmapFromUri(imageCaptureUri, ivImage.getHeight(), ivImage.getWidth());
         mImageView.setImageBitmap(bitmap);
     }
-
-    private Bitmap onSelectFromGalleryResult(Intent data){
-        /*http://stackoverflow.com/questions/34396539/image-load-in-imageview-from-camera-or-gallery*/
-        /** Code from Stackoverflow, Narendra Motwani, modified to be a function in a fragment by Rafael Karosuo */
-        //Uri selectedImageUri = data.getData();
-        imageCaptureUri = data.getData();
-        String[] projection = { MediaStore.MediaColumns.DATA };
-        @SuppressWarnings("deprecation")
-        Cursor cursor = this.getActivity().managedQuery(imageCaptureUri, projection, null, null,
-                null);
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
-        cursor.moveToFirst();
-
-        String selectedImagePath = cursor.getString(column_index);
-
-        Bitmap bm;
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(selectedImagePath, options);
-        final int REQUIRED_SIZE = 200;
-        int scale = 1;
-        while (options.outWidth / scale / 2 >= REQUIRED_SIZE
-                && options.outHeight / scale / 2 >= REQUIRED_SIZE)
-            scale *= 2;
-        options.inSampleSize = scale;
-        options.inJustDecodeBounds = false;
-        bm = BitmapFactory.decodeFile(selectedImagePath, options);
-
-        //imgPic.setImageBitmap(bm);
-        return bm;
-    }
-
-/*
-    private void onCaptureImageResult(Intent data, Bitmap thumbnail) {
-        ImageView ivImage = (ImageView) getActivity().findViewById(R.id.load_image_view);
-
-        //Bitmap
-        thumbnail = (Bitmap) data.getExtras().get("data");
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
-
-        File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
-
-        FileOutputStream fo;
-        try {
-            destination.createNewFile();
-            fo = new FileOutputStream(destination);
-            fo.write(bytes.toByteArray());
-            fo.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //ivImage.setImageBitmap(thumbnail);
-    }
-*/
 
     @Override
     public void onCreateOptionsMenu(
@@ -226,6 +146,8 @@ public class AddTripFragment extends Fragment {
                 }else{
                     MyDBAccess myDB = new MyDBAccess(this.getActivity());
                     Trip myNewTrip = new Trip();
+                    ArrayList<Trip> myTempList = new ArrayList<>();
+
                     myNewTrip.setName(tripName);
                         if (imageCaptureUri == null){
                             myNewTrip.setImgUri("Default");
@@ -233,7 +155,10 @@ public class AddTripFragment extends Fragment {
                             myNewTrip.setImgUri(imageCaptureUri.toString());
                         }
                     myDB.addTrip(myNewTrip);
+                    myTempList = myDB.getTripByName(myNewTrip.getName());
+
                     Intent intent = new Intent(this.getActivity(), ControllerMapActivity.class);
+                    intent.putExtra(CURRENT_TRIP_ID, myTempList.get(myTempList.size() - 1).getId());
                     startActivity(intent);
                     this.getActivity().finish();
                 }
