@@ -71,10 +71,16 @@ public class TripListAdapter extends ArrayAdapter<Trip> {
             dateComponents = tempTrip.getFechaDH();
             trip_date.setText(dateComponents[0]); //Set the YYYY/mm/dd
             trip_time.setText(dateComponents[1]); //Set the HH:mm
-            //trip_duration.setText(tempTrip.getStringDuracion(trip_duration.getContext()));
-            //trip_duration.setText("1 hrs, 35 min");
             trip_duration.setText(String.valueOf(tempTrip.getDuracion()));
-            trip_Image.setImageURI(Uri.parse(tempTrip.getImgUri()));
+            if (tempTrip.getImgUri().equals("Default")){
+                trip_Image.setImageBitmap(BitmapHelper.decodeSampledBitmapFromResource(trip_Image.getContext().getResources(), R.drawable.default_map, 70, 50));
+            }else{
+                //trip_Image.setImageURI(Uri.parse(tempTrip.getImgUri()));
+                Uri.Builder UriBuild = new Uri.Builder();
+                UriBuild.appendPath(tempTrip.getImgUri());
+                trip_Image.setImageBitmap(BitmapHelper.decodeSampledBitmapFromUri(Uri.parse(tempTrip.getImgUri()),50,50));
+            }
+
         }
 
         return convertView;

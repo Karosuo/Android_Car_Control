@@ -48,7 +48,7 @@
 
     <ImageView
         android:id="@+id/element_image"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="50dp"
         android:background="#aaa"
         android:adjustViewBounds="true"

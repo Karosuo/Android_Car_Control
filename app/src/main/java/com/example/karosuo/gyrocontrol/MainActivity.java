@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getFragmentManager();
         mListFrag = (MainListFragment) fm.findFragmentById(R.id.main_list_frag);
 
+        /** Setup Bitmap Helper Context*/
+        BitmapHelper.setContext(this);
+
     }
 
     @Override

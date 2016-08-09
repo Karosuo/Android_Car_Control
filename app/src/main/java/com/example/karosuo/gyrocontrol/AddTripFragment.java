@@ -73,7 +73,7 @@ public class AddTripFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0){
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    File file = new File(Environment.getExternalStorageDirectory(), "tmp_avatar" + String.valueOf(System.currentTimeMillis()) + ".jpg");
+                    File file = new File(Environment.getExternalStorageDirectory(), String.valueOf(System.currentTimeMillis()) + ".jpg");
 
                     imageCaptureUri = Uri.fromFile(file);
 
@@ -85,10 +85,12 @@ public class AddTripFragment extends Fragment {
                         ex.printStackTrace();
                     }
                     dialog.cancel();
-                }else{
-                    Intent intent = new Intent();
+                }else if(which == 1){
+                    //Intent intent = new Intent();
+                    Intent intent = new Intent(Intent.ACTION_PICK,
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    //intent.setAction(Intent.ACTION_GET_CONTENT);
                     startActivityForResult(Intent.createChooser(intent, "Complete action using"), PICK_FROM_FILE);
                 }
             }
@@ -113,14 +115,18 @@ public class AddTripFragment extends Fragment {
         if (resultCode != this.getActivity().RESULT_OK)
             return;
         Bitmap bitmap = null;
-        String path="";
+        //String path="";
         if (requestCode == PICK_FROM_FILE){
-            imageCaptureUri = data.getData();
+            /** Previous suggestion, left as ref*/
+            /*imageCaptureUri = data.getData();
             path = getRealPathFromURI(imageCaptureUri);
             if (path == null)
                 path = imageCaptureUri.getPath();
             if (path != null)
                 bitmap = BitmapFactory.decodeFile(path);
+                */
+            /** From Stack overflow, Narendra Motwani*/
+            bitmap = onSelectFromGalleryResult(data);
         }else if(requestCode == PICK_FROM_CAMERA){
             /** Android tut suggestion
              * https://www.youtube.com/watch?v=UiqmekHYCSU*/
@@ -134,12 +140,45 @@ public class AddTripFragment extends Fragment {
             /** Android Dev page suggestion */
             Bundle extras = data.getExtras();
             bitmap = (Bitmap) extras.get("data");
+            imageCaptureUri = data.getData();
             //ImageView ivImage = (ImageView) getActivity().findViewById(R.id.load_image_view);
             //ivImage.setImageBitmap(imageBitmap);
         }
 
         mImageView.setImageBitmap(bitmap);
     }
+
+    private Bitmap onSelectFromGalleryResult(Intent data){
+        /*http://stackoverflow.com/questions/34396539/image-load-in-imageview-from-camera-or-gallery*/
+        /** Code from Stackoverflow, Narendra Motwani, modified to be a function in a fragment by Rafael Karosuo */
+        //Uri selectedImageUri = data.getData();
+        imageCaptureUri = data.getData();
+        String[] projection = { MediaStore.MediaColumns.DATA };
+        @SuppressWarnings("deprecation")
+        Cursor cursor = this.getActivity().managedQuery(imageCaptureUri, projection, null, null,
+                null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+        cursor.moveToFirst();
+
+        String selectedImagePath = cursor.getString(column_index);
+
+        Bitmap bm;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(selectedImagePath, options);
+        final int REQUIRED_SIZE = 200;
+        int scale = 1;
+        while (options.outWidth / scale / 2 >= REQUIRED_SIZE
+                && options.outHeight / scale / 2 >= REQUIRED_SIZE)
+            scale *= 2;
+        options.inSampleSize = scale;
+        options.inJustDecodeBounds = false;
+        bm = BitmapFactory.decodeFile(selectedImagePath, options);
+
+        //imgPic.setImageBitmap(bm);
+        return bm;
+    }
+
 /*
     private void onCaptureImageResult(Intent data, Bitmap thumbnail) {
         ImageView ivImage = (ImageView) getActivity().findViewById(R.id.load_image_view);
@@ -167,16 +206,6 @@ public class AddTripFragment extends Fragment {
     }
 */
 
-    public String getRealPathFromURI(Uri contentUri){
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = this.getActivity().getContentResolver().query(contentUri, proj, null, null, null);
-        if (cursor==null)
-            return null;
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
-    }
-
     @Override
     public void onCreateOptionsMenu(
             Menu menu, MenuInflater inflater) {
@@ -198,6 +227,11 @@ public class AddTripFragment extends Fragment {
                     MyDBAccess myDB = new MyDBAccess(this.getActivity());
                     Trip myNewTrip = new Trip();
                     myNewTrip.setName(tripName);
+                        if (imageCaptureUri == null){
+                            myNewTrip.setImgUri("Default");
+                        }else{
+                            myNewTrip.setImgUri(imageCaptureUri.toString());
+                        }
                     myDB.addTrip(myNewTrip);
                     Intent intent = new Intent(this.getActivity(), ControllerMapActivity.class);
                     startActivity(intent);
