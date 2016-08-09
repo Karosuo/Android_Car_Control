@@ -118,13 +118,7 @@ public class ControllerMapActivity extends AppCompatActivity implements MySensor
     @Override
     public void getDataFromSensors(float[] sensorData) {
         if (!paused){
-
-            String message = String.format("%.3f,%.3f",sensorData[0],sensorData[1]);
-            /*
-            String ipAdress = String.format("192.168.0.3");
-            int port = 12345;
-            UDPConnection.setup(ipAdress, port);
-            */
+            String message = String.format("%.3f,%.3f,%.3f",sensorData[0],sensorData[1], sensorData[2]);
             UDPConnection.sendString(message);
         }
     }
