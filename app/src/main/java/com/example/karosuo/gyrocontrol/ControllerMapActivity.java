@@ -3,11 +3,14 @@ package com.example.karosuo.gyrocontrol;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -68,6 +71,15 @@ public class ControllerMapActivity extends AppCompatActivity implements MySensor
         }
         /** Add listener to get the sensors fragment data*/
         mSensFrag.registerListener(this);
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        MyDBAccess myDB = new MyDBAccess(this);
+        Trip tmpTrip = myDB.getTripById(current_trip_id);
+        ImageView bkImage = (ImageView) findViewById(R.id.controller_background_imageView);
+        bkImage.setImageBitmap(BitmapHelper.decodeSampledBitmapFromUri(Uri.parse(tmpTrip.getImgUri()),0, 0));
     }
 
     @Override
